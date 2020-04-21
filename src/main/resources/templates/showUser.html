@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Schoolboard - Userlist</title>
+        <link rel="stylesheet" href="/design.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" integrity="sha256-BtbhCIbtfeVWGsqxk1vOHEYXS6qcvQvLMZqjtpWUEx8=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2> Liste aller Userprofile</h2>
+
+        <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table_striped">
+            <tr>
+                <th>Benutzername</th>
+                <th>School-ID</th>
+                <th>Passwort</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>Gender</th>
+                <th>YearofBirth</th>
+            </tr>
+            <tr th:each="Userprofile: ${userprofil}">
+                <td th:text="${userprofil.username}">Benutzername</td>
+                <td th:text="${userprofil.School-ID}">School-ID</td>
+                <td th:text="${userprofil.Passwort}">Passwort</td>
+                <td th:text="${userprofil.firstName}">firstName</td>
+                <td th:text="${userprofil.lastName}">lastName</td>
+                <td th:text="${userprofil.Gender}">Gender</td>
+                <td th:text="${userprofil.YearofBirth}">YearofBirth</td>
+            </tr>
+        </table>
+    </body>
+</html>

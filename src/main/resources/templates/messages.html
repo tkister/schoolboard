@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SimpleMessage - Message</title>
+    <link rel="stylesheet" href="/design.message.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" integrity="sha256-BtbhCIbtfeVWGsqxk1vOHEYXS6qcvQvLMZqjtpWUEx8=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="text-center">
+    <form action="/message/registerMessage" method="post" id="REGISTERMSG"></form>
+    <form action="/vertretung/vertretung.html" id="LINK"></form>
+    <form  action="/login.html" id="LOGOUT"></form>
+<div class="container py-5 h-100" >
+    <div class="row" >
+        <div class="col-md-8">
+            <ul class="list-group mb-3">
+                <li class="list-group-item userlist">
+                    <div>
+                        <h6 class="headline">Chat</h6>
+                    </div>
+                </li>
+                <li class="list-group-item scroll-outer" id="chatbox">
+                    <div class="row scroll">
+                        <div class="col-md-8" th:each="message : ${messages}">
+                            <div class="card">
+                                <div class="my-card-header">
+                                    <small class="username" th:text="@{'@'+${message.transmitterUsername}}">@username</small>
+                                    <small class="time" th:text="${#dates.format(new java.util.Date(message.sendTime), 'dd.MM.yy - HH:mm')}">13:48</small>
+                                </div>
+                                <div class="card-body">
+                                    <p th:text="@{${message.msgContent}}"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <div>
+                     
+                    <li class="list-group-item d-flex justify-content-between lh-condensed userlist" id="sendForm">
+                        <div class="col-md-6">
+                            <input id="msgContent" name="msgContent" type="text" class="form-control" placeholder="type something..." th:field="*{newMessage.msgContent}" form="REGISTERMSG">
+                            <input name="transmitterUsername" type="hidden" class="form-control" placeholder="type something..." th:field="*{newMessage.transmitterUsername}" form="REGISTERMSG" />
+                            <input name="receiverUsername" type="hidden" class="form-control" placeholder="type something..." th:field="*{newMessage.receiverUsername}" form="REGISTERMSG"/>
+                            <input name="sender" type="hidden" class="form-control" placeholder="type something..." th:value="*{sender}" form="REGISTERMSG"/>
+                            <input name="receiver" type="hidden" class="form-control" placeholder="type something..." th:value="*{receiver}" form="REGISTERMSG" />
+                        </div>
+                        <button type="submit" class="btn btn-primary px-4 " form="REGISTERMSG">Send</button>
+                        <button class="btn btn-primary px-4 " form="LINK">To the Agencies</button>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="list-group mb-3">
+                <li class="list-group-item userlist">
+                        <h6 class="headline" >Userlist</h6>
+                </li>
+                <li class="list-group-item scroll-outer">
+                    <ul class="list-group scroll">
+                        <li class="list-group-item d-flex justify-content-between lh-condensed" th:each="user : ${users}">
+                            <div>
+                                <h6 class="" th:text="@{'@'+${user.username}+', ('+${user.yearOfBirth}+'),'+${user.gender}}"></h6>
+                                <small th:text="@{${user.firstName}+' '+${user.lastName}}"></small>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed userlist">
+                    Scroll to see all users ...
+                </li>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    var objDiv = document.getElementById("chatbox");
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+    setTimeout(function(){
+        if (document.activeElement.id != 'msgContent') {
+            window.location.reload(5);
+        }
+    }, 2000);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

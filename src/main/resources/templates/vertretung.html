@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Schoolboard - Vertretung</title>
+    <link rel="stylesheet" href="/design.message.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" integrity="sha256-BtbhCIbtfeVWGsqxk1vOHEYXS6qcvQvLMZqjtpWUEx8=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="text-center">
+<form  action="/message/messages.html" id="bM"></form>
+<div class="container py-5 h-100" >
+    <div class="row" >
+        <div class="col-md-12">
+            <ul class="list-group mb-2">
+                <ul class="list-group-item d-inline-flex" id="Header">
+                    <button class="btn btn-primary px-4 " form="bM">Back to Messages</button>
+                    <div class="col-md-8">
+                        <h4 class="headline">Vertretungen</h4>
+                    </div>
+                </ul>
+                <li class="list-group-item scroll-outer" id="Vertretungsbox">
+                    <div class="row scroll">
+                    	<table class="table table-condensed table-striped table-hover">
+                            <thead>
+                            <td>Klasse</td>
+                            <td>Stunde</td>
+                            <td>Fach</td>
+                            <td>Lehrer</td>
+                            </thead>
+                       	 <div class="col-md-12" th:each="vertretung : ${vertretung}">
+                            <div class="col-md-12">
+                            	<tbody>
+                                	<td><p th:text="@{${vertretung.klasse}}">@Klasse</td>
+                                	<td><p th:text="@{${vertretung.stunde}}">@Stunde</td>
+                                	<td><p th:text="@{${vertretung.fach}}">@Fach</td>
+                                	<td><p th:text="@{${vertretung.lehrer}}">@Lehrer</td>
+                                </tbody>
+                            </div>
+                        </div>
+                        </table>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

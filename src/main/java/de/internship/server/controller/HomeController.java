@@ -1,0 +1,42 @@
+package de.internship.server.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller
+@RequestMapping(path = "/")
+public class HomeController {
+
+    @GetMapping("")
+    public String index() {
+        return "redirect:login.html";
+    }
+
+    @GetMapping("login.html")
+    public String loginHTML(@ModelAttribute("sender") String sender, @ModelAttribute("receiver") String receiver, Model model) {
+        model.addAttribute("sender", sender);
+        model.addAttribute("receiver", receiver);
+        return "login";
+    }
+
+    @GetMapping("registration.html")
+    public String registrationHTML(@ModelAttribute("sender") String sender, @ModelAttribute("receiver") String receiver,  Model model) {
+        model.addAttribute("sender", sender);
+        model.addAttribute("receiver", receiver);
+        return "registration";
+    }
+
+    @GetMapping("showUser.html")
+    public String showUserHTML() {
+        return "showUser";
+    }
+
+    @GetMapping("vertretungtest.html")
+    public String showHomeHTML() {return "Home";
+    }
+
+}
