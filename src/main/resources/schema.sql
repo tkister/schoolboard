@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS user_profile;
+
 CREATE TABLE user_profile (
 username VARCHAR(16) NOT NULL,
 school_ID VARCHAR(10) NOT NULL,
@@ -12,7 +12,7 @@ PRIMARY KEY(username)
 );
 
 
-DROP TABLE IF EXISTS message;
+
 CREATE TABLE message (
 msg_id INT NOT NULL,
 transmitter_username VARCHAR(16) NOT NULL,
@@ -21,7 +21,7 @@ msg_content VARCHAR(140),
 send_time BIGINT NOT NULL
 );
 
-DROP TABLE IF EXISTS vertretung;
+
 CREATE TABLE vertretung(
 v_id INT NOT NULL,
 stunde INT NOT NULL,
